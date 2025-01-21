@@ -1,16 +1,18 @@
 <template>
   <div>
-    <ul>
+    <ul v-if="events">
       test
-      {{ events.data }}
+      {{ events.message }}
 
-      <div v-for="(p , i) in events.data"
-      :key="i">
-
-{{ p.name }} , {{ p.email }}
-
-      </div>
+testthesrnsnjnsfdasdasd
     </ul>
+
+    <div v-else>
+
+
+      loading 
+    </div>
+    
   </div>
 </template>
 
