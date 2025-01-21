@@ -4,7 +4,7 @@
       test
       {{ events.message }}
 
-testthesrnsnjnsfd
+testthesrnsnjnsfdasdasd
     </ul>
 
     <div v-else>
