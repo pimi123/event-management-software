@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->enum('role', ['event_organizer', 'manager', 'end_user', 'admin'])->default('end_user');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('phone')->nullable();
+            $table->string('country')->nullable();
+            $table->string('language')->default('en');
+            $table->string('currency')->default('USD');
             $table->timestamps();
         });
 
