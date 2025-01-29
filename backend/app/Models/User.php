@@ -5,8 +5,10 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Event;
+use Appp\Models\Payment;
 
 class User extends Authenticatable
 {
@@ -19,10 +21,16 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'role',
         'name',
         'email',
         'password',
+        'phone',
+        'country',
+        'language',
+        'currency',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -51,5 +59,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class , 'organizer_id');
 
+    }
+
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class ,'user_id');
+    }
+
+    public function Payments(): HasMany 
+    {
+        return $this->hasMany(Payment::class , "user_id");
+    }
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Reviews::class,"user_id");
     }
 }

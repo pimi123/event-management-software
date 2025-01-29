@@ -2,9 +2,16 @@
   <div>
     <ul v-if="events">
       test
-      {{ events.message }}
+      {{ events.role }}
+      {{ events.id }}
 
-testthesrnsnjnsfdasdasd
+      <div v-for="(event , i) in events" :key="i" >
+
+
+        {{ event.organizer_id }}
+      </div>
+
+
     </ul>
 
     <div v-else>
@@ -30,7 +37,7 @@ const fetchEvents = async () => {
     }
     const data = await response.json(); // Parse the JSON data
     console.log(data, "Received data");
-    events.value = data; // Assign data to your Vue reactive variable
+    events.value = data.data; // Assign data to your Vue reactive variable
   } catch (error) {
     console.error("Error fetching events:", error);
   }
